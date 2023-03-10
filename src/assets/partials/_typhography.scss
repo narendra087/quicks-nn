@@ -1,0 +1,17 @@
+@mixin bold {
+  font-size: 16px;
+  font-weight: bold;
+}
+@mixin bold-sm {
+  font-size: 14px;
+  font-weight: bold;
+}
+@mixin regular {
+  font-size: 16px;
+}
+@mixin bold-sm {
+  font-size: 14px;
+}
+@mixin bold-xs {
+  font-size: 12px;
+}
