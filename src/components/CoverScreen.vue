@@ -22,6 +22,7 @@
     right: 0;
     bottom: 0;
     color: #FFF;
+    z-index: 100;
     min-height: 100vh;
     display: flex;
     position: fixed;
