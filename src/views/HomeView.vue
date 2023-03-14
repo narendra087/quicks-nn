@@ -39,6 +39,8 @@
         <MenuIcons class="" width="56" height="56" />
       </div>
     </div>
+    
+    <InboxModal v-if="activeMenu === 'inbox'" />
   </main>
 </template>
 
@@ -47,11 +49,14 @@
   import InboxIcons from '../components/icons/InboxIcons.vue'
   import TaskIcons from '../components/icons/TaskIcons.vue'
   
+  import InboxModal from '../components/InboxModal.vue'
+  
   export default {
     components: {
       MenuIcons,
       InboxIcons,
       TaskIcons,
+      InboxModal,
     },
     data() {
       return {

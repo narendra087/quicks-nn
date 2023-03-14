@@ -9,9 +9,17 @@
 @mixin regular {
   font-size: 16px;
 }
-@mixin bold-sm {
+@mixin regular-sm {
   font-size: 14px;
 }
-@mixin bold-xs {
+@mixin regular-xs {
   font-size: 12px;
+}
+
+@mixin ellipsis($clamp) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $clamp;
+  -webkit-box-orient: vertical;
 }
