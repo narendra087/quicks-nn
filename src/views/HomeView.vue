@@ -11,7 +11,7 @@
       <div
         class="menu__item menu__item-task"
         :class="{
-          'menu__item--active': activeMenu === 'task'
+          'menu__item--active': activeMenu === 'task',  
         }"
         @click="() => toggleActiveMenu('task')"
       >
@@ -132,6 +132,7 @@
       .menu__list {
         right: 0;
         align-items: end;
+        gap: 31px;
       }
       .menu__item-label {
         display: none;
@@ -184,6 +185,7 @@
       
       &--active {
         bottom: -2px;
+        order: 1;
         &.menu__item-inbox .menu__item-icon {
           background: map-get(colors.$colors, 'indicator', '200');
         }
