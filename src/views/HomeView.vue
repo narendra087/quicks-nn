@@ -90,6 +90,12 @@
           fill: map-get(colors.$colors, 'indicator', '200');
         }
       }
+      
+      &--active {
+        svg path {
+          fill: #FFF;
+        }
+      }
     }
   }
 </style>
@@ -178,6 +184,12 @@
       
       &--active {
         bottom: -2px;
+        &.menu__item-inbox .menu__item-icon {
+          background: map-get(colors.$colors, 'indicator', '200');
+        }
+        &.menu__item-task .menu__item-icon {
+          background: map-get(colors.$colors, 'indicator', '100');
+        }
         .menu__item-icon {
           width: 68px;
           height: 68px;
