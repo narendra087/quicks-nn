@@ -6,23 +6,34 @@
     </div>
     <div class="modal__container">
       <div class="modal__header">
-        <div class="modal__header-list" v-if="!activeChat">
+        <div class="modal__header-channel" v-if="!activeChannel">
           <input class="modal__search" placeholder="Search" type="text">
           <SearchIcons class="modal__search-icon" width="12" height="12" />
         </div>
         <div class="modal__header-chat" v-else>
-          <ArrowBackIcons width="16" height="16" />
+          <div class="modal__back-icon" @click="() => setActiveChannel(null)">
+            <ArrowBackIcons width="16" height="16" />
+          </div>
+          <div class="modal__header-title">
+            <p class="modal__header-title-text">{{ store.selectedChannel.title }}</p>
+            <p class="modal__header-participant">3 participants</p>
+          </div>
+          <div class="modal__close-icon">
+            <CloseIcons width="14" height="14" />
+          </div>
         </div>
       </div>
-      <div class="modal__body">
-        <div class="modal__body-container" v-if="!isLoading && !activeChat">
-          <ChatList v-for="chat in store.chatData" :key="chat.id" :chat="chat" @action="setActiveChat" />
+      <div
+        class="modal__body"
+        :class="{
+          'modal__body-chat': activeChannel
+        }"
+      >
+        <div class="modal__body-container" v-if="!isLoading && !activeChannel">
+          <ChannelCard v-for="channel in store.channelList" :key="channel.id" :channel="channel" @action="setActiveChannel" />
         </div>
-        <div class="modal__body-container" v-else-if="!isLoading && activeChat">
-          
-        </div>
+        <ChatContainer v-if="!isLoading && activeChannel" />
       </div>
-      <div class="modal__footer"></div>
     </div>
   </div>
 </template>
@@ -31,8 +42,10 @@
   import SearchIcons from './icons/SearchIcons.vue'
   import LoadingIcons from './icons/LoadingIcons.vue'
   import ArrowBackIcons from './icons/ArrowBackIcons.vue'
+  import CloseIcons from './icons/CloseIcons.vue'
   
-  import ChatList from './Inbox/ChatList.vue'
+  import ChannelCard from './Inbox/ChannelCard.vue'
+  import ChatContainer from './Inbox/ChatContainer.vue'
   
   import { useChatStore } from '../stores/chat'
 
@@ -42,13 +55,15 @@
       SearchIcons,
       LoadingIcons,
       ArrowBackIcons,
-      ChatList,
+      CloseIcons,
+      ChannelCard,
+      ChatContainer,
     },
     data() {
       return {
         isLoading: true,
         store: useChatStore(),
-        activeChat: null,
+        activeChannel: null,
       }
     },
     mounted() {
@@ -57,9 +72,9 @@
       }, 1000);
     },
     methods: {
-      setActiveChat(id) {
-        console.log(id)
-        this.activeChat = id
+      setActiveChannel(data) {
+        this.activeChannel = data
+        this.store.selectedChannel = data
       }
     },
   }
@@ -86,6 +101,7 @@
     bottom: 83px;
     max-width: 40vw;
     max-height: 68vh;
+    border-radius: 5px;
     
     ::-webkit-scrollbar {
       width: 8px;
@@ -112,6 +128,28 @@
     &__header {
       padding: 20px 34px;
       position: relative;
+      &-chat {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        svg {
+          cursor: pointer;
+        }
+      }
+      &-title {
+        width: 100%;
+        &-text {
+          @include typhography.ellipsis(1);
+          font-weight: bold;
+          color: #2F80ED;
+        }
+      }
+      &-participant {
+        @include typhography.regular-xs;
+        line-height: 10px;
+        margin-top: 9px;
+        color: #333;
+      }
     }
     
     &__search {
@@ -134,6 +172,10 @@
       &-container {
         height: calc(68vh - 92px);
         overflow: auto;
+      }
+      &-chat {
+        border-top: 1px solid #BDBDBD;
+        padding: 13.5px 20px 20px;
       }
     }
     

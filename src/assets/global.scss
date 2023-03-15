@@ -34,3 +34,19 @@ body {
 a {
   text-decoration: none;
 }
+
+.btn {
+  height: 40px;
+  padding: 0 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  
+  &-primary {
+    background: #2F80ED;
+    border-color: #2F80ED;
+    color: #FFF;
+    &:hover {
+      background: rgba(47, 128, 237, 0.9);
+    }
+  }
+}

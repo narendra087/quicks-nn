@@ -1,23 +1,23 @@
 <template>
-  <div class="chat"
+  <div class="channel"
     :class="{
-      'chat__group': chat.isGroup
+      'channel__group': channel.isGroup
     }"
-    @click="() => $emit('action', chat.id)"
+    @click="() => $emit('action', channel)"
   >
-    <div class="chat__unread" v-if="!chat.isRead"></div>
-    <div class="chat__icon">
-      <div v-if="chat.isGroup" class="chat__icon-item chat__icon-back"><PersonIcons width="12" height="12" /></div>
-      <div v-if="chat.isGroup" class="chat__icon-item chat__icon-front"><PersonIcons width="12" height="12" /></div>
-      <div v-if="!chat.isGroup" class="chat__icon-item chat__icon-personal">{{ chat?.title ? chat.title[0] : '' || '' }}</div>
+    <div class="channel__unread" v-if="!channel.isRead"></div>
+    <div class="channel__icon">
+      <div v-if="channel.isGroup" class="channel__icon-item channel__icon-back"><PersonIcons width="12" height="12" /></div>
+      <div v-if="channel.isGroup" class="channel__icon-item channel__icon-front"><PersonIcons width="12" height="12" /></div>
+      <div v-if="!channel.isGroup" class="channel__icon-item channel__icon-personal">{{ channel?.title ? channel.title[0] : '' || '' }}</div>
     </div>
-    <div class="chat__content">
-      <div class="chat__content-title">
-        <p>{{ chat?.title || '' }}</p>
-        <span>{{ chat?.date || '' }}</span>
+    <div class="channel__content">
+      <div class="channel__content-title">
+        <p>{{ channel?.title || '' }}</p>
+        <span>{{ channel?.date || '' }}</span>
       </div>
-      <p class="chat__content-sender" v-if="chat?.sender">{{ chat?.sender }}</p>
-      <p class="chat__content-text">{{ chat?.content }}</p>
+      <p class="channel__content-sender" v-if="channel?.sender">{{ channel?.sender }}</p>
+      <p class="channel__content-text">{{ channel?.content }}</p>
     </div>
   </div>
 </template>
@@ -29,7 +29,7 @@
       PersonIcons
     },
     props: {
-      chat: {
+      channel: {
         required: true,
       }
     },
@@ -39,7 +39,7 @@
 <style lang="scss" scoped>
   @use '../../assets/partials/typhography';
   @use '../../assets/partials/colors';
-  .chat {
+  .channel {
     border-top: 1px solid #828282;
     padding: 22px 0 38px;
     margin: 0 21px;
@@ -66,7 +66,7 @@
     }
     
     &__group {
-      .chat__icon {
+      .channel__icon {
         justify-content: unset;
       }
     }
