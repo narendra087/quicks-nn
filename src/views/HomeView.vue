@@ -40,7 +40,8 @@
       </div>
     </div>
     
-    <InboxModal v-if="activeMenu === 'inbox'" />
+    <InboxModal v-if="activeMenu === 'inbox'" @toggleMenu="toggleActiveMenu" />
+    <TaskModal v-if="activeMenu === 'task'" @toggleMenu="toggleActiveMenu" />
   </main>
 </template>
 
@@ -50,6 +51,7 @@
   import TaskIcons from '../components/icons/TaskIcons.vue'
   
   import InboxModal from '../components/InboxModal.vue'
+  import TaskModal from '../components/TaskModal.vue'
   
   export default {
     components: {
@@ -57,6 +59,7 @@
       InboxIcons,
       TaskIcons,
       InboxModal,
+      TaskModal,
     },
     data() {
       return {

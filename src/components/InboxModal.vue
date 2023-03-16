@@ -69,7 +69,7 @@
     mounted() {
       setTimeout(() => {
         this.isLoading = false
-      }, 1000);
+      }, 500);
     },
     methods: {
       setActiveChannel(data) {
