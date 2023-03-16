@@ -81,7 +81,7 @@
           title: '',
           date: '',
           desc: '',
-          status: 'active',
+          isCompleted: false,
           isNew: true,
           isEdit: false,
           category: ['My Tasks']

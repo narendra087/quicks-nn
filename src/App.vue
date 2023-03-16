@@ -12,6 +12,9 @@
     components: {
       CoverScreen,
     },
+    metaInfo: {
+      title: 'Quicks App - NN'
+    },
     data() {
       return {
         isLoading: true,

@@ -2,7 +2,7 @@
   <div
     class="task"
     :class="{
-      'task--inactive': task.status === 'inactive',
+      'task--inactive': task.isCompleted,
       'task--opened': isOpen
     }"
   >
@@ -13,7 +13,7 @@
         <input v-if="task.isNew || task.isEdit" :value="task.title" @change="(e) => handleChangeData(e, 'title')" class="task__title-input" type="text" placeholder="Type Task Title" :name="`title${task.id}`" :id="`title${task.id}`">
         <div class="task__summary">
           <p class="task__deadline" v-if="task.date">
-            <span class="task__deadline-left" v-if="task.status !== 'inactive'">{{ differentDays >= 0 ? `${differentDays} Days Left` : 'Past deadlines!' }}</span>
+            <span class="task__deadline-left" v-if="!task.isCompleted">{{ differentDays >= 0 ? `${differentDays} Days Left` : 'Past deadlines!' }}</span>
             <span class="task__deadline-date">{{ dateFormat || '' }}</span></p>
           <div class="task__option">
             <div class="task__option-item task__option-item-expand" @click="() => isOpen = !isOpen">
@@ -71,7 +71,7 @@
       }
     },
     mounted() {
-      if (this.task.status === 'inactive') {
+      if (this.task.isCompleted) {
         this.isOpen = false
         this.isInactive = true
       }
@@ -98,11 +98,11 @@
       handleToggleTask() {
         const index = this.store.taskData.findIndex(x => x.id === this.task.id)
         if (index != -1) {
-          if (this.store.taskData[index].status == 'inactive') {
-            this.store.taskData[index].status = 'active'
+          if (this.store.taskData[index].isCompleted) {
+            this.store.taskData[index].isCompleted = false
             this.isInactive = false
           } else {
-            this.store.taskData[index].status = 'inactive'
+            this.store.taskData[index].isCompleted = true
             this.isInactive = true
           }
         }
