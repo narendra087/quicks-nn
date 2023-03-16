@@ -145,7 +145,7 @@
       border-radius: 5px;
       border: 1px solid #BDBDBD;
       background: #FFF;
-      z-index: 100;
+      z-index: 20;
       &-item {
         height: 40px;
         padding: 0 18px;

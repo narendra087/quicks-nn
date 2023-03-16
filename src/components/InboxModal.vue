@@ -18,7 +18,7 @@
             <p class="modal__header-title-text">{{ store.selectedChannel.title }}</p>
             <p class="modal__header-participant">3 participants</p>
           </div>
-          <div class="modal__close-icon">
+          <div class="modal__close-icon" @click="() => $emit('toggleMenu', 'inbox')">
             <CloseIcons width="14" height="14" />
           </div>
         </div>
@@ -96,11 +96,11 @@
     background: #FFF;
     position: absolute;
     right: 0;
-    width: 100%;
+    width: 734px;
     height: 100%;
     bottom: 83px;
-    max-width: 40vw;
-    max-height: 68vh;
+    max-width: calc(100vw - 54px);
+    max-height: calc(100vh - 127px);
     border-radius: 5px;
     
     ::-webkit-scrollbar {
@@ -170,7 +170,7 @@
       position: relative;
       padding: 0 12px;
       &-container {
-        height: calc(68vh - 92px);
+        height: calc(100vh - 200px);
         overflow: auto;
       }
       &-chat {

@@ -145,11 +145,11 @@
 <style lang="scss" scoped>
   .chat {
     &__container {
-      height: calc(68vh - 180px);
+      height: calc(100vh - 312px);
       overflow-x: hidden;
       overflow-y: auto;
       &-connecting {
-        height: calc(68vh - 250px);
+        height: calc(100vh - 375px);
       }
     }
     
@@ -177,6 +177,7 @@
       &-input {
         display: flex;
         gap: 13px;
+        z-index: 40;
       }
       &-connect {
         display: flex;
@@ -197,6 +198,7 @@
         border-radius: 5px 5px 0 0;
         padding: 15px 20px;
         width: calc(100% - 89px);
+        z-index: 30;
         &-close {
           position: absolute;
           top: 15px;
