@@ -9,7 +9,7 @@
     <input class="task__status" type="checkbox" :name="`checkbox${task.id}`" :id="`checkbox${task.id}`" :checked="isInactive" @change="handleToggleTask">
     <div class="task__content">
       <div class="task__info">
-        <p v-if="!task.isNew && !task.isEdit" class="task__title">{{ task.title }}</p>
+        <p v-if="!task.isNew && !task.isEdit" class="task__title">{{ task.title || 'No Title' }}</p>
         <input v-if="task.isNew || task.isEdit" :value="task.title" @change="(e) => handleChangeData(e, 'title')" class="task__title-input" type="text" placeholder="Type Task Title" :name="`title${task.id}`" :id="`title${task.id}`">
         <div class="task__summary">
           <p class="task__deadline" v-if="task.date">
