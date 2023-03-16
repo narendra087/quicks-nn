@@ -13,7 +13,7 @@
       CoverScreen,
     },
     metaInfo: {
-      title: 'Quicks App - NN'
+      title: 'Quicks App - by NN'
     },
     data() {
       return {
@@ -27,7 +27,3 @@
     }
   }
 </script>
-
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
-</style>
